@@ -68,14 +68,14 @@
       var eth = new Eth(TestRPC.provider());
       var el = function(id){ return document.querySelector(id); };
 
-      /*
+
       // uncomment to enable MetaMask support:
       if (typeof window.web3 !== 'undefined' && typeof window.web3.currentProvider !== 'undefined') {
         eth.setProvider(window.web3.currentProvider);
       } else {
         eth.setProvider(provider); // set to TestRPC if not available
       }
-      */
+
 
       eth.accounts().then(function(accounts) {
         accounts.forEach(function(address){
