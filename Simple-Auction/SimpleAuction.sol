@@ -6,6 +6,8 @@ contract SimpleAuction {
     // or time periods in seconds.
     address public beneficiary;
     uint public auctionEnd;
+    uint public auctionStart;
+    uint public biddingTime;
 
     // Current state of the auction.
     address public highestBidder;
@@ -15,7 +17,7 @@ contract SimpleAuction {
     mapping(address => uint) pendingReturns;
 
     // Set to true at the end, disallows any change
-    bool ended;
+    bool public ended;
 
     // Events that will be fired on changes.
     event HighestBidIncreased(address bidder, uint amount);
@@ -35,6 +37,8 @@ contract SimpleAuction {
     ) public {
         beneficiary = _beneficiary;
         auctionEnd = now + _biddingTime;
+        auctionStart = now;
+        biddingTime = _biddingTime;
     }
 
     /// Bid on the auction with the value sent
